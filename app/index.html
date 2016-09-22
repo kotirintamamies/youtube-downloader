@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="youtube">
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/pure.css" />
+        <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+        <meta charset="UTF-8">
+        <title>youtube downloader</title>
+    </head>
+    <script src="lib/angular.min.js"></script>
+    <script src="ng-app.js"></script>
+    
+    <body ng-controller="main">
+        <div style = "padding-top: 20px; border: 0px solid black; position: fixed; top: 0px; left: 0px; right: 0px; background-color: white; overflow: hidden;"><center>
+        <div class="pure-g">
+            <form class="pure-u-1-2 pure-form" ng-submit="check(current);current=''">
+                <input name="videourl" type="text" ng-model="current" />
+                <button class="pure-button" type="submit" >add video</button>
+            </form>
+        <form class = "pure-u-1-2 pure-form" ng-submit="downloadVideos()">
+                <label for="mp3box">Convert to mp3</label>
+                <input name="mp3box" type="checkbox" ng-model="mp3" style="margin-right: 20px;" />
+            <button class="pure-button" ng-disabled="!videos.length" type="submit"><span ng-show="mp3">convert</span><span ng-hide="mp3">save</span> videos</button>
+        </form>
+        </div>
+            </center>
+        </div>
+        <div class="backdrop" style="margin-top: 40px;">
+        <fieldset class="inline" ng-repeat ="video in videos" ng-hide="video.finished">
+            <legend ng-hide="video.working" ng-click="del($index)">remove</legend>
+            <img style="margin-top: 12px;margin-bottom:12px;margin-left:22px;margin-right:22px;" ng-show="video.working" src="img/loading.gif" />
+            <a ng-hide="video.working" ng-href="{{video.url}}" target="_blank"> 
+                <img ng-src="{{video.img}}" />
+            </a>
+        </fieldset>
+        </div>
+        <div style="position: fixed; bottom: 0px; left: 0px; right: 0px;">
+            <center>
+                <form class = "pure-form">
+                    <input id="folderSelect" name="folderSelect" type="file" class="inputfile" webkitdirectory onchange="angular.element(this).scope().folderChange()" />
+                    <label for="folderSelect">Download videos to: {{saveFolder}}</label>
+                </form>    
+            </center>
+        </div>
+    </body>
+</html>

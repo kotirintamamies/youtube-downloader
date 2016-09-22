@@ -1,0 +1,35 @@
+{
+  "name": "youtube-downloader",
+  "version": "1.0.0",
+  "description": "Downloads videos from youtube and converts them into mp3 files. Use electron to run and build. Usable only for windows, because of executables.",
+  "author": "S. Laitila",
+  "devDependencies": {
+  "electron-builder": "^7.3.0",
+  "electron-packager": "^8.0.0",
+  "electron-prebuilt": "^1.4.0"
+},
+  "build": {
+    "win": {
+      "iconUrl": "https://raw.githubusercontent.com/kotirintamamies/electron-icons/master/youtube-dl/app.ico",
+      "icon": "app/app.ico",
+      "loadingGif": "loading.gif"
+    },
+  "scripts": {
+    "pack": "build --win"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kotirintamamies/youtube-downloader.git"
+  },
+  "keywords": [
+    "youtube",
+    "download",
+    "windows"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kotirintamamies/youtube-downloader/issues"
+  },
+  "homepage": "https://github.com/kotirintamamies/youtube-downloader#readme"
+}
+}
